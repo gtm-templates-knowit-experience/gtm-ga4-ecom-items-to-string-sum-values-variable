@@ -21,12 +21,12 @@ This Variable for **Google Tag Manager (Web)** turns **Google Analytics 4 (GA4)*
 
 ## Related Information
 A similiar Variable for **Google Tag Manager (Server)** does also exist:
-* [Ecommerce Items to String or Sum Item Values - SGTM Variable](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-input-method.png)
+* [Ecommerce Items to String or Sum Item Values - SGTM Variable](https://github.com/gtm-templates-knowit-experience/sgtm-ecom-items-to-string-sum-values-variable)
 
 ## Variable Functionality in Detail
 ### Select Input Method
 Input can either be **GA4 Ecommerce Data Layer** or **Variable**.
-![Select Input Method](https://github.com/gtm-templates-knowit-experience/sgtm-ecom-items-to-string-sum-values-variable/blob/main/images/sgtm-ecom-items-standard-mapping.png)
+![Select Input Method](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-input-method.png)
 
 ### Select Mapping Method
 Mapping can be done using **GA4 Standard Ecommerce Events** or **Custom Mapping**.
