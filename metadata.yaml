@@ -1,0 +1,6 @@
+homepage: "https://github.com/gtm-templates-knowit-experience/"
+documentation: "https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable"
+versions:
+  # Latest version
+  - sha: dd139992e898a37dca184db6bbdbbb54d14de10a
+    changeNotes: Initial release.
