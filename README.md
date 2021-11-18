@@ -1,6 +1,8 @@
 # GA4 Ecommerce Items to String or Sum Item Values - Web Variable
 This Variable for **Google Tag Manager (Web)** turns **Google Analytics 4 (GA4)** Ecommerce Item array (e.g. **[{item_id: '12', quantity: 1},{item_id: '34', quantity: 2}]**) into a string (e.g. **'12|34'**), or sums Item Values (e.g **3**). When summing values you can choose to multiply the value with quantity (e.g. **[{price: 10, quantity: 1},{price: 20, quantity: 2}]**) which will give the result **50**).
 
+This Template is available in the [**Google Tag Manager Template Gallery**](https://tagmanager.google.com/gallery/#/owners/gtm-templates-knowit-experience/templates/gtm-ga4-ecom-items-to-string-sum-values-variable).
+
 ## Variable Functionality Overview
 * Select Input Method
   * GA4 Ecommerce Data Layer
