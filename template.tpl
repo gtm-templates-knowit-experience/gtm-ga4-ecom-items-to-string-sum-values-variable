@@ -514,6 +514,7 @@ const event = dataLayer('event', 2);
 const getType = require('getType');
 const queryPermission = require('queryPermission');
 const makeNumber = require('makeNumber');
+const Math = require('Math');
   
 let standardMapping = {};
   if (data.selectionType == 'standardMapping') {
@@ -573,10 +574,12 @@ let standardMapping = {};
       return itemsArray
         .reduce(function(a, b){return a + makeNumber(b[itemMetric]*(b.quantity||1));}, 0);
     } else {
-      return itemsArray
-        .map(obj => obj[itemMetric])
-        .filter(obj => obj)
-        .reduce((a, b) => a + makeNumber(b), 0);      
+      return Math.round(
+        itemsArray
+          .map(obj => obj[itemMetric])
+          .filter(obj => obj)
+          .reduce((a, b) => a + makeNumber(b), 0) * 100
+          ) / 100;     
     }
   }
 }
