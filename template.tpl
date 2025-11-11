@@ -553,21 +553,28 @@ let standardMapping = {};
         return;
       }
   
-  if (data.itemTypeSelection === 'string') {
-    const paramDelimiter = data.paramDelimiter;
-    const itemString = data.itemStandardString ? data.itemStandardString : data.itemCustomString;
-    if (data.itemUniqueString) {
-      return itemsArray
-        .map(obj => obj[itemString])
-        .filter((value, index, self) => self.indexOf(value) === index)
-        .join(paramDelimiter);
-    } else {
-      return itemsArray
-        .map(obj => obj[itemString])
-        .filter(obj => obj)
-        .join(paramDelimiter);    
-      }
+if (data.itemTypeSelection === 'string') {
+  const paramDelimiter = data.paramDelimiter;
+  const itemString = data.itemStandardString ? data.itemStandardString : data.itemCustomString;
+
+  var values = itemsArray
+    .map(function (obj) { return obj[itemString]; })
+    .filter(function (v) { return v != null && v !== ''; });
+
+  // If nothing there, return undefined
+  if (!values.length) return;
+
+  if (data.itemUniqueString) {
+    var unique = [];
+    for (var i = 0; i < values.length; i++) {
+      if (unique.indexOf(values[i]) === -1) unique.push(values[i]);
+    }
+    return unique.join(paramDelimiter);
   } else {
+    return values.join(paramDelimiter);
+  }
+}
+ else {
     const itemMetric = data.itemStandardMetric ? data.itemStandardMetric : data.itemCustomMetric;
     if (data.multiplyQuantity) {
       return itemsArray
