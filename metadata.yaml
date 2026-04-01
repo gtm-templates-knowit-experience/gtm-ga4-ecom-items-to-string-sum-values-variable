@@ -2,7 +2,7 @@ homepage: "https://github.com/gtm-templates-knowit-experience/"
 documentation: "https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable"
 versions:
   # Latest version
-  - sha: 6c6858e2cdeb3de04b95e310073683ad957dd73a
+  - sha: 933e8a167f907da3ff9ae17b1ef975d765ca0520
     changeNotes: Added filtering functionality. Ex. sum only items where item_brand is "Some Brand".
   # Older versions
   - sha: d9aeb0d5ff4e674adfa37e24616bf3c77d4d28ca
