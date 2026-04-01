@@ -62,6 +62,14 @@ In this example **price** will be **multiplied** with **quantity**.
 
 ![Sum Values from Item Parameters](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-sum-values.png)
 
+### Filter items before processing
+
+This filter functionality makes it possible to ex. **sum only items where item_category is "Some Category"**, or **create string where item_brand is "Some Brand"**.
+
+![Filter items before processing](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/Item-filtering/images/gtm-ga4-ecom-items-to-string-or-sum-values-filter-items.png)
+
+Works with both **Create Strings** and **Sum Item Values**.
+
 ## Potential use cases
 * Create **Ecommerce value** or a fallback **value** if the implemented value fails.
 * Create **Event Scoped strings from Items in cases where you need this information both for Items and Event Scope.
