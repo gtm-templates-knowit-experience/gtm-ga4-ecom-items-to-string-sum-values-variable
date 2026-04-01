@@ -84,7 +84,7 @@ if (!itemsArray.length) {
 
 // 3. Process Items (String Map vs Metric Sum)
 if (data.itemTypeSelection === 'string') {
-  const paramDelimiter = data.paramDelimiter || ',';
+  const paramDelimiter = data.paramDelimiter;
   const itemString = data.itemStandardString ? data.itemStandardString : data.itemCustomString;
 
   const values = itemsArray
