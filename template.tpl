@@ -528,6 +528,23 @@ ___TEMPLATE_PARAMETERS___
         "alwaysInSummary": true
       },
       {
+        "type": "SELECT",
+        "name": "filterMode",
+        "displayName": "Filter Mode",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "include",
+            "displayValue": "Include"
+          },
+          {
+            "value": "exclude",
+            "displayValue": "Exclude"
+          }
+        ],
+        "simpleValueType": true
+      },
+      {
         "type": "TEXT",
         "name": "filterValue",
         "displayName": "Filter Value (e.g., T-Shirts)",
@@ -605,7 +622,6 @@ if (!queryPermission('read_data_layer', keyPath) || !mappingResult) {
 
 const ecom = data.inputSelectionVariable ? data.inputSelectionVariable : dataLayer('ecommerce', 1);
 
-// Early exit if ecom or ecom.items is missing/invalid
 if (!ecom || !ecom.items || getType(ecom.items) !== 'array') {
   return;
 }
@@ -622,17 +638,24 @@ if (data.enableFilter && data.filterKey && data.filterValue) {
   itemsArray = itemsArray.filter((item) => {
     let itemValue = item[data.filterKey];
     
-    // Skip if the key doesn't exist on this item
-    if (itemValue === undefined || itemValue === null) return false;
+    // If the key is missing from the item:
+    // - Drop it if we are INCLUDING specific matches.
+    // - Keep it if we are EXCLUDING specific matches.
+    if (itemValue === undefined || itemValue === null) {
+       return data.filterMode === 'exclude';
+    }
 
     itemValue = makeString(itemValue);
     const finalItemValue = data.normalizeFilter ? itemValue.toLowerCase().trim() : itemValue;
 
-    return finalItemValue === targetValue;
+    const isMatch = finalItemValue === targetValue;
+
+    // Return the opposite if the user selected 'exclude'
+    return data.filterMode === 'exclude' ? !isMatch : isMatch;
   });
 }
 
-// Exit if array is empty after filtering (or natively empty)
+// Exit if array is empty after filtering
 if (!itemsArray.length) {
   return;
 }
@@ -662,7 +685,6 @@ if (data.itemTypeSelection === 'string') {
   return values.join(paramDelimiter);
 
 } else {
-  // Numeric Summation
   const itemMetric = data.itemStandardMetric ? data.itemStandardMetric : data.itemCustomMetric;
   
   if (data.multiplyQuantity) {
@@ -672,7 +694,6 @@ if (data.itemTypeSelection === 'string') {
       return total + (value * qty);
     }, 0);
     
-    // Round to 2 decimal places to fix JS floating point errors
     return Math.round(rawTotal * 100) / 100;
     
   } else {
@@ -681,7 +702,6 @@ if (data.itemTypeSelection === 'string') {
       .filter(val => val != null)
       .reduce((total, val) => total + (makeNumber(val) || 0), 0);
       
-    // Round to 2 decimal places to fix JS floating point errors
     return Math.round(rawTotal * 100) / 100;
   }
 }
