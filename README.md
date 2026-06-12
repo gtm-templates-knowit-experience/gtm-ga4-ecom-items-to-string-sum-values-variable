@@ -20,6 +20,8 @@ This Template is available in the [**Google Tag Manager Template Gallery**](http
     * Standard Item Parameters
     * Custom Item Parameters
     * Multiply Item Value with Item Quantity
+  * Filter items before processing
+	* Make string or sum only filtered ex. item_category.
 
 ## Related Information
 A similiar Variable for **Google Tag Manager (Server)** does also exist:
@@ -28,7 +30,7 @@ A similiar Variable for **Google Tag Manager (Server)** does also exist:
 ## Variable Functionality in Detail
 ### Select Input Method
 Input can either be **GA4 Ecommerce Data Layer** or **Variable**.
-![Select Input Method](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-input-method.png)
+![Select Input Method](images/gtm-ga4-ecom-items-to-string-or-sum-values-input-method.png)
 
 ### Select Mapping Method
 Mapping can be done using **GA4 Standard Ecommerce Events** or **Custom Mapping**.
@@ -38,7 +40,7 @@ Mapping simply means that only values that are mapped should return a result.
 #### Mapping using GA4 Standard Ecommerce Events
 Image shows how to map using GA4 Standard Ecommerce Events.
 
-![Selecting GA4 Standard Ecommerce Events](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-standard-mapping.png)
+![Selecting GA4 Standard Ecommerce Events](images/gtm-ga4-ecom-items-to-string-or-sum-values-standard-mapping.png)
 
 #### Custom Mapping
 Image shows how to do Custom Mapping.
@@ -46,21 +48,21 @@ Image shows how to do Custom Mapping.
 * Type in the value in the **Custom Parameter Field** that should be matched against the selected **Variable**. This means the Selected **Variable** should be able to return the value in this field.
 * Select **Variable** to map against.
 
-![Selecting Custom Mapping](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-custom-mapping.png)
+![Selecting Custom Mapping](images/gtm-ga4-ecom-items-to-string-or-sum-values-custom-mapping.png)
 
 ### Create Strings from Item Parameters
 Image shows how to **Create a String** from a **Custom Item Parameter**. Choosing **Standard Item Parameters** can be done using the **Select Item Type** dropdown.
 
 In the example **Unique Items** are returned. E.g. **[{item_color: 'Blue'},{item_color: 'Red'},{item_color: 'Blue'}]** will return the result **'Blue|Red'**.
 
-![Create Strings from Item Parameters](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-create-strings.png)
+![Create Strings from Item Parameters](images/gtm-ga4-ecom-items-to-string-or-sum-values-create-strings.png)
 
 ### Sum Item Values from Item Parameters
 Image shows how to **Sum Item Values** using **Standard Item Parameters**. You can also use **Custom Item Parameters** to sum values.
 
 In this example **price** will be **multiplied** with **quantity**.
 
-![Sum Values from Item Parameters](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-sum-values.png)
+![Sum Values from Item Parameters](images/gtm-ga4-ecom-items-to-string-or-sum-values-sum-values.png)
 
 ## Potential use cases
 * Create **Ecommerce value** or a fallback **value** if the implemented value fails.
@@ -70,9 +72,9 @@ In this example **price** will be **multiplied** with **quantity**.
 ## Images of the Variable
 Image shows how to **Create Strings** using **Custom Mapping** and **Custom Item Parameters**.
 
-![Create Strings using Custom Mapping and Custom Item Parameters](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-custom.png)
+![Create Strings using Custom Mapping and Custom Item Parameters](images/gtm-ga4-ecom-items-to-string-or-sum-values-custom.png)
 
-Image shows how to **Sum Item Values** using **GA4 Standard Ecommerce Events** and **Standard Item Parameters**.
+Image shows how to **Sum Item Values** using **GA4 Standard Ecommerce Events**, **Standard Item Parameters** and **filtered**.
 
-![Sum Item Values using GA4 Standard Ecommerce Events and Standard Item Parameters](https://github.com/gtm-templates-knowit-experience/gtm-ga4-ecom-items-to-string-sum-values-variable/blob/main/images/gtm-ga4-ecom-items-to-string-or-sum-values-standard.png)
+![Sum Item Values using GA4 Standard Ecommerce Events and Standard Item Parameters](images/gtm-ga4-ecom-items-to-string-or-sum-values-standard.png)
 
