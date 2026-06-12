@@ -50,26 +50,31 @@ if (!ecom || !ecom.items || getType(ecom.items) !== 'array') {
 let itemsArray = ecom.items;
 
 // --------------------------------------------------------
-// Filtering Logic (Target Specific Items)
+// TASK 2: Filtering Logic (Target Specific Items via Table)
 // --------------------------------------------------------
-if (data.enableFilter && data.filterKey && data.filterValue) {
+if (data.enableFilter && data.filterKey && data.filterTable && data.filterTable.length > 0) {
   
-  const targetValue = data.normalizeFilter ? makeString(data.filterValue).toLowerCase().trim() : makeString(data.filterValue);
+  // Create an array of target values from the GTM Simple Table
+  const targetValues = data.filterTable.map((row) => {
+    const rawVal = makeString(row.value);
+    return data.normalizeFilter ? rawVal.toLowerCase().trim() : rawVal;
+  });
 
   itemsArray = itemsArray.filter((item) => {
     let itemValue = item[data.filterKey];
     
     // If the key is missing from the item:
-    // - Drop it if we are INCLUDING specific matches.
-    // - Keep it if we are EXCLUDING specific matches.
     if (itemValue === undefined || itemValue === null) {
        return data.filterMode === 'exclude';
     }
 
     itemValue = makeString(itemValue);
-    const finalItemValue = data.normalizeFilter ? itemValue.toLowerCase().trim() : itemValue;
+    const finalItemValue = data.normalizeFilter 
+      ? itemValue.toLowerCase().trim() 
+      : itemValue;
 
-    const isMatch = finalItemValue === targetValue;
+    // Check if the item's value exists anywhere in our table of target values
+    const isMatch = targetValues.indexOf(finalItemValue) !== -1;
 
     // Return the opposite if the user selected 'exclude'
     return data.filterMode === 'exclude' ? !isMatch : isMatch;
@@ -84,7 +89,7 @@ if (!itemsArray.length) {
 
 // 3. Process Items (String Map vs Metric Sum)
 if (data.itemTypeSelection === 'string') {
-  const paramDelimiter = data.paramDelimiter;
+  const paramDelimiter = data.paramDelimiter || ',';
   const itemString = data.itemStandardString ? data.itemStandardString : data.itemCustomString;
 
   const values = itemsArray
